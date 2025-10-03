@@ -1,20 +1,21 @@
 <html>
     <head>
         <title> meu primeiro html</title>
+        <style>
+            img{width: 300px;
+            border-radius: 50%}
+            p{color:blue;}
+            h1{color: red;}
+            ul{background-color: lightsalmon; padding: 20px;}
+            td{border: 1px solid black; border-collapse: collapse;}
+
+        </style>
     </head>
     <body>
         <!--isso é um comentario-->
-        <h1> Titulo de nível 1</h1>
-        <h2> Titulo de nível 2</h2>
-        <h3> Titulo de nível 3</h3>
-        <h4> Título de nível 4</h4>
-        <h5> Título de nível 5</h5>
-        <h6> Título de nível 6</h6>
-        <p> isto é um parágrafo</p>
-        <span> isto é somento um texto</span><span> dentro de outro</span>
+       
         <hr>
     
-        <p>Lorem <em>ipsum</em> dolor sit amet consectetur adipisicing elit. Molestias debitis eaque labore numquam ut repudiandae quaerat ullam nostrum, totam voluptate saepe. Vitae distinctio minima nostrum aperiam facilis nemo sapiente nam.</p>
     
    <ul> 
     <li> git init - cria um repositorio em um diretorio</li>
@@ -28,6 +29,83 @@
     <li> git push remote branch</li>
     <li> git config user.name = "nome"</li>
     <li> git config user.email="email"</li>
-   </ul> </body>
+   </ul>
+ <h1> Titulo de nível 1</h1>
+        <h2> Titulo de nível 2</h2>
+        <h3> Titulo de nível 3</h3>
+        <h4> Título de nível 4</h4>
+        <h5> Título de nível 5</h5>
+        <h6> Título de nível 6</h6>
+        <p> Programação para internet</p>
+        <p>Lorem <em>ipsum</em> dolor sit amet consectetur adipisicing elit. Molestias debitis eaque labore numquam ut repudiandae quaerat ullam nostrum, totam voluptate saepe. Vitae distinctio minima nostrum aperiam facilis nemo sapiente nam.</p>
+        <p> isto é um parágrafo</p>
+
+       
+        <span> isto é somento um texto</span><span> dentro de outro</span>
+        <h1>Listas</h1>
+        <p> O html possui listas não ordenadas e listas ordenadas,
+            as litas não ordenadas são definidas com a tag &lt;ul&gt; 
+            enquanto usamos &lt;ol&gt; para listas ordenadas</p>
+        <ul> 
+            <li> panqueca</li>
+            <li> pera</li>
+            <li> uva</li>
+            <li> maça</li>
+        </ul>
+         <ol start="5" type> 
+            <li> panqueca</li>
+            <li> pera</li>
+            <li> uva</li>
+            <li> maça</li>
+        </ol>
+        <dl>
+            <dt>Café</dt>
+            <dd>bebida fundamental a vida</dd>
+            <dt>água</dt>
+            <dd>segunda bebida fundamental a vida</dd>
+        </dl>
+
+       <h1>tags de formatação de texto</h1>
+       <p>Lorem <strong>ipsum, dolor </strong>,<sub>sit</sub>, 10<sub>2</sub>=2<sub>10</sub> <sup>amet</sup> 
+        consectetur adipisicing elit. 
+        Earum numquam unde <mark>maiores ex totam dicta,</mark> aliquam, 
+        non debitis distinctio ipsam, inventore facere. Suscipit 
+        consequuntur at adipisci corporis vero ipsum molestias?</p>
+
+        <h1>links e imagens</h1>
+        <a href="http://www.google.com"> Google</a>
+          <a target= "_self"="http://www.google.com"> Google</a>
+           <a target= "_blank"="http://www.google.com"> Google</a>
+
+           <br>
+           <img src="./bibble.webp" alt="Bibble">
+           <img src="https://saopauloparacriancas.com.br/wp-content/uploads/2024/01/sp_criancas_teletubbies_2.jpg" alt="teletubies" >
+
+          <h1>Tabelas np html</h1>
+          <table>
+            <tr>
+                <th>Nome</th>
+              <td>Idade</td>
+               <td>Profissão</td>
+
+               <tr>
+            <td>João</td>
+            <td>20</td>
+            <td>Estudante</td>
+
+               </tr>
+
+
+            
+          </table>
+          <h1>Formulários</h1>
+          <form action="https://google.com/search">
+          
+          <label for="q">Query de busca</label>
+          <input id="q" name="q" type="text">
+          <input type="submit" value="buscar">
+            </form>
+
+    </body>
 
     </html>
