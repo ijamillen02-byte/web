@@ -7,7 +7,7 @@
             p{color:blue;}
             h1{color: red;}
             ul{background-color: lightsalmon; padding: 20px;}
-            td{border: 1px solid black; border-collapse: collapse;}
+            table, th, td{border: 1px solid black; border-collapse: collapse;}
 
         </style>
     </head>
@@ -85,8 +85,8 @@
           <table>
             <tr>
                 <th>Nome</th>
-              <td>Idade</td>
-               <td>Profissão</td>
+              <th>Idade</th>
+               <th>Profissão</th>
 
                <tr>
             <td>João</td>
@@ -99,11 +99,16 @@
             
           </table>
           <h1>Formulários</h1>
-          <form action="https://google.com/search">
-          
-          <label for="q">Query de busca</label>
+          <form action="https://google.com/search" >
+            <input type="text" valeu = "" placeholder ="entre com seu nome">
+          <br>
+          <label for="q">Query de busca</label> <br>
           <input id="q" name="q" type="text">
           <input type="submit" value="buscar">
+          <br>
+          <label for="D">Data de nascimento</label>
+          <input id="CAMPOIMPUT" name="q"  type="date" draggable="true"
+          value="2002-02-23">
             </form>
 
     </body>

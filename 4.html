@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html
+ lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario e tabelas + introdução CSS</title>
+
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse; }
+    </style>
+</head>
+<body>
+    
+    <h1>Fomulários</h1>
+    <p> O HTML possui a tag form que possibilita definir fomulários para submissão de dados informados pelo usuário por meio de campos de input, dentro do formulário.
+        A tag &lt;form&gt possui além dos atributos globais e também atributo action="url", utilizado para definir o destino dos dados submetidos.
+
+
+        <span>Exemplo:</span>
+        <pre> 
+            &lt;form action="url">
+            &lt;input type="text" name="variavelA"
+            ...
+            &lt;/form>
+
+        </pre>
+     </p>
+
+     <h1>Table</h1>
+     <p>A tag table é utilizada par adefinição de tabela no HTML, internamente em uma tabela podemos criar linhas "rows" utilizando a tag &lt;tr> e celular dentro das linhas utilizando a tag &lt;td> <span>exemplo:</span>   </p>
+
+     <pre>
+        &lt;table> 
+            &lt;tr> 
+                &lt;td> Celula 1x1 &lt;/td> &lt;td> Celula 1x2 &lt;/td>
+              &lt;/tr>
+              &lt;tr> 
+                &lt;td> Celula 2x1 &lt;/td> &lt;td> Celula 2x2 &lt;/td>
+              &lt;/tr>
+         &lt;/table> 
+     </pre>
+     <span>O código anterior define a tabela abaixo</span>
+      <table> 
+            <tr> 
+                <td> Celula 1x1 </td> <td> Celula 1x2 </td>
+              </tr>
+              <tr> 
+                <td> Celula 2x1 </td> <td> Celula 2x2 </td>
+              </tr>
+         </table> 
+
+        <!--table>(tr>td{bla}*2)*2 - como criar tabelas mais rápido--> 
+
+        <table>
+            <tr>
+                 <td rowspan=" 3">Carnes</td>
+                <td>Id</td>
+                <td colspan="2">item churrasco </td>
+                 <td>valor</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>carne</td>
+                 <td>5kg</td>
+                  <td>R$200</td>
+            </tr>
+
+          <tr>
+                <td>2</td>
+                <td>frango</td>
+                 <td>2kg</td>
+                  <td>R$40</td>
+            </tr>
+
+              <tr>
+                <td rowspan=" 2"> Bebida</td>
+                <td>4</td>
+                <td>Refrigerante</td>
+                 <td>2L</td>
+                  <td>R$20</td>
+            </tr>
+        
+        </table>
+     <p>Além </p>
+
+</body>
+</html>
