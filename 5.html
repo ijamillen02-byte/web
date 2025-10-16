@@ -1,0 +1,50 @@
+<!DOCTYPE <html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css"> <!--CSS EXTERNO-->
+
+        <STYLe>
+            /*css incorporado ao documento html */
+
+            p{color:blueviolet};
+        </STYLe>
+
+        <title>CSS</title>
+    </head>
+
+    <body>
+
+        <p style=" color:rgb(196, 255, 204);">lorem</p>
+
+        <h1>Formas de declarar CSS no documento html</h1>
+        <ul>
+            <li> 
+                Externo - por meio da tag &lt; link rel="stylesheet" href="style.css">
+            </li>
+
+            <li>
+                Incorporando - por meio da tag &lt; style no cabeçalho do nosso documento html
+            </li>
+
+            <li>
+                inline - por meio do atributo style em qualquer tag HTML
+            </li>
+
+            <li>
+                **por meio da arvore DOM via JavaScript (JS)
+            </li>
+        </ul>
+        <script>
+            let p =document.querySelector("p");
+            p.style.color="#FFAABB";
+        </script>
+
+    </body>
+    
+</html>
+
+
+
+</html>
