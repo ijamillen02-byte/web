@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+             align-content: center;                       
+            /*align-items:center ; posisiona os itens que estao dentro do fluxo secundário*/
+           flex-wrap: nowrap;
+            height: 100vh;
+            animation: rotacao 6s linear infinite; /*vai mexer os itens juntos*/
+        }
+        .box{
+            flex-grow: 1; /*vai pegar os espaços que sobram e preencher tudo*/
+            display: flex;
+            border-radius: 50%;
+            border: 20px groove #cf8bcf;
+            background-color: #eb71a0;
+            width: 100px;
+            height: 100px;
+            font-size: 4rem;
+            flex-shrink: 0;
+            animation: rotacao 6s linear infinite;
+        }
+
+           
+           /* animation: rotacao 6s linear infinite; /*mexe so os container*/ */
+
+        
+        /*cubic mdn - site para ver essa animação*/
+       /* @keyframes rotacao {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+             aqui ele faz rodando*/
+
+              @keyframes rotacao {
+            from{
+                transform: translate(0,0) rotate(0deg);
+            }
+            to{
+                transform: translate(100%, 100%) rotate(360deg);
+            } /* aqui ele muda de lugar e roda tudo junto*/
+              }
+
+        .box:nth-child(2n)/*para intercalar a distribuição de espaço em 2 em 2*/{
+            flex-shrink: 0;
+        }
+
+        .box{border-top-color:#cf6969;
+        border-right-color: #8b168b;
+    border-bottom-color: #b64545;
+            border-left-color: #f327f3;
+}
+
+
+
+
+
+        /*
+        .box:nth-child(3n)/*para intercalar a distribuição de espaço- de tres em tres perde mais rapido(4)
+            flex-shrink: 4;*/
+    
+      
+    /*  #item1{order:2;} /*para mudar as ordens das div*/
+       /* #item2{order:2;}*/
+       /* #item2{order: 2;}*/
+        /* #item4{order:1;}*/   */
+
+    </style>
+</head>
+<body>
+
+      <div class="box" id="item1">1</div>
+      <div class="box" id="item2">2</div>
+      <div class="box" id="item3">3</div>
+      <div class="box" id="item4">4</div>
+     
+</body>
+</html>

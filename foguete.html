@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+             align-content: center;                       
+            /*align-items:center ; posisiona os itens que estao dentro do fluxo secundário*/
+           flex-wrap: nowrap;
+            height: 100vh;
+            animation: rotacao 6s linear infinite; /*vai mexer os itens juntos*/
+        }
+        .box{
+            flex-grow: 1; /*vai pegar os espaços que sobram e preencher tudo*/
+            display: flex;
+            border-radius: 50%;
+            border: 20px groove #cf8bcf;
+            background-color: #eb71a0;
+            width: 100px;
+            height: 100px;
+            font-size: 4rem;
+            flex-shrink: 0;
+            animation: rotacao 6s linear infinite;
+        }
+
+           
+
+              @keyframes subir {
+            from{
+                transform: translate(100vh)
+            }
+            to{
+                transform: translate(0vh);
+            } /* aqui ele muda de lugar e roda tudo junto*/
+              }
+
+        
+    
+    </style>
+</head>
+<body>
+
+      <div class="box" id="foguete"></div>
+ 
+</body>
+</html>
