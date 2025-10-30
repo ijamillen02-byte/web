@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .container{
+            display : flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 100vh; 
+            whidth: 100%;
+            max-width: 1200px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 30px;
+            box-shadow: 0 10px 30 px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .box{
+            background-color: #a8c7f8 ;
+            border: 3px solid #4a6d9b;
+            display: flex;
+            justify-content: center;
+            align-items: center
+            heigh: 100px;
+            width: 500px;
+            magin: 15px 0;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 10px;
+            transitions: açç 0.3s ease;
+            flex-shrink: 0;
+
+        }
+
+        .box:hover{
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+            
+            #box1{
+            border-color: blueviolet;
+            color:blueviolet
+        }
+        #box2{
+            border-color: green;
+            color: green;
+        }
+        #box3{
+            border-color: red;
+            color: red;
+        }
+        #box4{
+            border-color: yellow;
+            color: yellow;
+        }
+
+        .explanations h2{
+            color: #1a2a6c;
+            margin-bottom: 15px;
+        }
+
+        explanations p{
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .code-sample{
+             background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        .issue {
+            background-color: #fff0f0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .fix {
+            background-color: #f0fff0;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+
+
+       
+    </style>
+
+</head>
+<body>
+    <div class="container">
+    <div id="box1" class="box">1</div>
+    <div id="box2" class="box">2</div>
+    <div id="box3" class="box">3</div>
+    <div id="box4" class="box">4</div>
+    </div>
+</body>
+</html>
