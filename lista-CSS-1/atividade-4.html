@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Exemplo especificidade de seletores</title>
+   <style>
+      /*regra 1*/ li{color:red;} /* ele retorna o id do ítem e define a cor*/ 
+      /*regra 2*/ .churras{color:green;}
+      /*regra 3*/ .fruta{color:gray}
+      /*regra 4*/ li+li.churras{color: black;}
+      /*regra 5*/ .churras[draggable="true"]{color: magenta;} /* além dele retornar o ítem e definir cor, também define que pode ser movido*/
+      /*regra 6*/ #lip1,#lip2,#lip3{color:blue} /* define a cor para pera e uva */
+      /*regra 7*/ #lip3.fruta{color:orange}/* define a cor final para uva(prevalece o que vem por último*/
+      /*regra 8*/ ol>li.churras#lip5{color:purple}
+   </style>
+
+</head>
+<body>
+
+     <ol>
+   <!--item 1--> <li id="lip0">Abacaxi</li>  --serve para definir o id do item e a cor vermelha
+   <!--item 2--> <li           class="fruta">Melão</li> --serve para definir a classe do item e a cor cinza
+   <!--item 3--> <li id="lip2" class="fruta">Pera</li> --serve para definir o id e a classe do item e a cor azul
+   <!--item 4--> <li id="lip3" class="fruta">Uva</li> --serve para definir o id e a classe do item e a cor laranja
+   <!--item 5--> <li id="lip4" class="fruta">Maçã</li>    --serve para definir o id e a classe do item e a cor cinza
+   <!--item 6--> <li           class="churras">Carne</li> --item de churrasco com cor preta
+   <!--item 7--> <li           class="churras">Linguiça</li> --item de churrasco com cor magenta
+   <!--item 8--> <li id="lip7" class="churras" draggable="true">Pão de alho</li>  
+   </ol>   
+    
+</body>
+</html>

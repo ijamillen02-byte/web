@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{display: flex;
+        flex-direction: row;
+        justify-content: space-evenly; /*espaço entre/redor os blocos*/
+        align-content: center;    
+        align-items: center; /*align-items é como os itens se comportam na linha, center - centralizar os blocos na horizontal*/
+        flex-wrap: wrap;
+        border: 1px solid red;
+        height: 100vh; /*vw é em relação a largura- vh em relação a altura*/
+        }
+        /*row define o eixo que será trabalhado
+        column centraliza os blocos na vertical*/
+
+        box{flex-shrink: 0;}
+    
+           /* °  flex-shrink - diminui o quadrado, pois ele cede seu tamanho aos demais*/
+          /* °  flex-grow - diz o quanto que o elemento vai usar do espaço que vai sobrar entre eles | 1 = 100%
+            do esáço que sobrou.*/
+         /* °os n° que voce vai definir nos fkex shrink/flex-grow somando eles, seria a proporção qwue cada um vai tomar no espaço.*/
+   
+
+        .box{
+            background-color: rgb(168, 199, 248) ;
+            border: 3px solid #4a6d9b;
+        display: block;
+        height: 100px;
+        width: 100px;
+        /*joguinho flexbox froggy*/
+
+
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="box1" class="box">1</div>
+        <div id="box2" class="box">2</div>
+        <div id="box3" class="box">3</div>
+        <div id="box4" class="box">4</div>
+        <div id="box5" class="box">5</div>
+          <div id="box3" class="box">6</div>
+        <div id="box4" class="box">7</div>
+        <div id="box5" class="box">8</div>
+    </div>
+</body>
+</html>
