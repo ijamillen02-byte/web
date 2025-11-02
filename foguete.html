@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+             align-content: center;                       
+            /*align-items:center ; posisiona os itens que estao dentro do fluxo secundário*/
+            height: 100vh;
+          
+        }
+        #foguete{
+            font-size: 100px;
+            animation: subir 5s ease-in-out infinite;
+        }
+    
+
+              @keyframes subir{
+            0%{
+                transform: translateY(100svh) rotate(-45deg);
+            }
+            to {
+                transform: translateY(0vh) rotate(0deg);
+            } 
+              }
+
+        
+    
+    </style>
+</head>
+<body>
+
+      <div class="box" id="foguete">🚀</div>
+ 
+</body>
+</html>
