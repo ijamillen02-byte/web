@@ -3,12 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Como incluir css em documento html</title>
 </head>
 <body>
 
     <h1>Como podemos incluir CSS em documentos HTML?</h1>
-    <p></p>
+    <p>Há 3 formas:</p>
+    <ol>
+        <li>CSS inline;</li>
+        <li>CSS interno;</li>
+        <li>CSS externo;</li>
+    </ol>
+    <hr>
+    <h3>CSS inline</h3>
+    <p>Ele aplica estilos diretamente a um elemento HTML usando o atributo &lt;style>. É útil para estilos
+        específicos de um único elemento, mas não recomendado para grandes projetos. <span>Exemplo:</span>
+        <pre>&lt;p style="color: blue"> Esse texto ficará azul.&lt;/p></pre>
+    </p>
+    <hr>
+    <h3>CSS interno</h3>
+    <p>A tag &lt;style> para inserir códigos CSS dentro da seção &lt;head> do seu documento html. Ele é útil para estilos que se aplicam apenas a uma página específica. <span>Exemplo:</span>
+     <pre>&lt;p style> para inserir códigos CSS dentro da seção &lt; head>
+&lt;style>
+h1{
+    color: red;
+}
+&lt;/style>
+&lt;/head>
+&lt;/body>
+&lt; h1> este título é vermelho.&lt;/h1
+
+&lt;/body>
+     </pre>
+     <hr>
+     <h3>CSS externo</h3>
+     <p>Este é o método masi comum e recomendado, especialmente para projetos maiores. Ele envolve a criação de um arquivo9 <em>.css</em> separado e a vinculação dele ao seu HTML usando a tag &lt;link> na seção &lt;head>. <span>Exemplo:</span></p>
+    <dl>
+        <dt>No arquivo HTML:</dt>
+        <dd>
+            <pre>
+            &lt;head> 
+                &lt;link rel="stylesheet" href"style.css">
+            &lt;/head>
+            </pre>
+        </dd>
+        <dt>No arquivo CSS <em>(style.css)</em>:</dt>
+        <dd>
+            <pre>
+                h1{
+                    color: yellow;
+                }
+            </pre>
+        </dd>
+    </p>
     
 </body>
 </html>

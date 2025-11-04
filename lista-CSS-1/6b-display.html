@@ -3,59 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>blocos</title>
     <style>
-        .container{
+        body{
+            margin: 0;
+            padding: 0;
+            font-size: 0;
+        }
+        .box{
             display: inline-block;
-            flex-direction: row;
-            justify-content: space-evenly;
-            align-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            border: 1px solid black;
-            height: 100vh
+            width: 150px;
+            height: 150px;
+            font-size: 50px;
+            text-align: center;
+            line-height: 150px;
+            position: static;
         }
     
         #box1{
             background-color: blueviolet;
-            border: 1px solid blueviolet;
-            display: inline-block;
-            height:100px;
-            width: 100px;
         }
         #box2{
             background-color: green;
-            border: 1px solid green;
-            display: inline-block;
-            height:100px;
-            width: 100px;
+            
         }
         #box3{
             background-color: red;
-            border: 1px solid red;
-            display: inline-block;
-            height:100px;
-            width: 100px;
+            
         }
         #box4{
             background-color: yellow;
-            border: 1px solid yellow;
-            display: inline-block;
-            height:100px;
-            width: 100px;
+            
         }
 
 
     </style>
 </head>
 <body>
-    <div class="container">
+
         <div id="box1" class="box">1</div>
         <div id="box2" class="box">2</div>
         <div id="box3" class="box">3</div>
         <div id="box4" class="box">4</div>
         
-
-    </div>
 </body>
 </html>
