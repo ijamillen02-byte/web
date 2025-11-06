@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         
+        .box{
+            flex-grow: 1; 
+            display: flex;
+            border-radius: 50%;
+            border: 20px groove #f8bbf8;
+            background-color: #ccadfd;
+            width: 100px;
+            height: 100px;
+            font-size: 4rem;
+            flex-shrink: 0;
+            animation: rotacao 6s linear infinite;
+        }
+        @keyframes rotacao {
+            from {
+                transform: translate(0,0) rotate(0deg);
+            }
+            to {
+                transform: translate(100%, 100%) rotate(360deg);
+            } 
+              }
+               .box:nth-child(2n){
+            flex-shrink: 0;
+        }
+          .box{border-top-color:#fa9a9a;
+        border-right-color: #fc9afc;
+    border-bottom-color: #ff5e5e;
+            border-left-color: #f891f8;
+}
+
+        
+    </style>
+</head>
+<body>
+    <h1> O que é uma regra CSS?
+         Explique o conceito de regra CSS e forneça um exemplo prático que inclua um seletor, uma propriedade e um valor.
+</h1>
+    <p>É uma ferramenta com recursos para estilizar e posisionar elementos em página html.
+        Há a declaração e o seletor, onde a declaração vai definiir a aparência como as cores, tamanhos, linhas e afins, enquanto
+        o seletor seria os índices para poder incluir as declarações dentro deles, no caso
+         vai definir qual elemento a regra será aplicada.
+
+        <br>
+         <br>
+         Exemplo:
+         &lt; table{
+            border: 1px solid black;
+            border-collapse: collapse;
+         }
+    </p>
+
+    <p><span>Exemplos:</span></p>
+   <div class="box" id="item1">1</div>
+   <div class="box" id="item2">2</div>
+
+</body>
+</html>
