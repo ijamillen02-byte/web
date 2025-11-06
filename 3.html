@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeiras</title>
+    <style>
+        .bandeira{
+            width:300px;
+            height: 200px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            
+        }
+
+        #franca{
+            display: flex;
+        }
+        .azul, .branco, .vermelho{
+            flex: 1;
+            height: 100%;;
+        }
+        .azul{
+            background-color: blue;
+        }
+        .branco{
+            background-color: white;
+        }
+        .vermelho{
+            background-color: red;  
+
+        }
+        
+       
+        #alemanha{
+            display: flex;
+            flex-direction: column;
+
+        }
+        #alemanha > div.preto{
+            height: 33.33%;
+            background-color: black;;
+        }
+        #alemanha > div.vermelho{
+            height: 33.33%;
+            background-color: red;;
+        }
+        #alemanha > div.amarelo{
+            height: 33.33%;
+            background-color: yellow;;
+        }
+
+         #japao{
+            background-color: white;
+            position: relative;
+        }
+
+        .cir{
+            background-color: red;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+       
+
+
+
+        
+       
+    </style>
+</head>
+<body>
+
+     <div class="bandeira" id="franca">
+        <div class="azul"></div>
+        <div class="branco"></div>
+        <div class="vermelho"></div>
+
+    </div>
+
+
+    <div class="bandeira" id="alemanha">
+        <div class="preto"></div>
+        <div class="vermelho"></div>
+        <div class="amarelo"></div>
+ </div>
+
+  <div class=" bandeira" id="japao">
+        <div class="cir"></div>
+
+    </div>
+
+   
+    
+
+
+</body>
+</html>
