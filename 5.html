@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 100px 100px 100px 100px;
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+        .header {
+            grid-area: header;
+            background: #9ac2eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        
+        .item {
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+
+        .item-1 {
+            grid-column: 1;
+            grid-row: 1;
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .item-2 {
+            grid-column: 2;
+            grid-row: 1 / span 2;
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        .item-3 {
+            grid-column: 3;
+            grid-row: 1 / span 3;
+            background: #45b7d1;
+            color: white;
+        }
+        
+        .item-4 {
+            grid-column: 1;
+            grid-row: 2 / span 2;
+            background: #96ceb4;
+            color: white;
+        }
+        
+        .item-5 {
+            grid-column: 2;
+            grid-row: 3;
+            background: #feca57;
+            color: white;
+        }
+        
+        .item-6 {
+            grid-column: 1 / span 2;
+            grid-row: 4;
+            background: #ff9ff3;
+            color: white;
+        }
+        
+        .item-7 {
+            grid-column: 3;
+            grid-row: 4;
+            background: #54a0ff;
+            color: white;
+        }
+       
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+        </header>
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+        <div class="item item-3"></div>
+        <div class="item item-4"></div>
+        <div class="item item-5"></div>
+        <div class="item item-6"></div>
+        <div class="item item-7"></div>
+     
+            
+        </footer>
+    </div>
+</body>
+</html>
