@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Simples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Cabeçalho */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: #666;
+        }
+        
+        /* Conteúdo Principal */
+        .main {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Perfil */
+        .profile {
+            flex: 2;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .profile-info h2 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .profile-info p {
+            color: #7f8c8d;
+        }
+        
+        .bio {
+            margin: 15px 0;
+            line-height: 1.5;
+            color: #555;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+        }
+        
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <div class="logo">MeuPerfil</div>
+            <nav class="nav">
+                <a href="#">Início</a>
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+            </nav>
+        </header>
+        
+        <!-- Conteúdo Principal -->
+        <main class="main">
+            <!-- Seção do Perfil -->
+            <section class="profile">
+                <div class="profile-header">
+                    <div class="avatar">JS</div>
+                    <div class="profile-info">
+                        <h2>João Silva</h2>
+                        <p>Desenvolvedor Web</p>
+                    </div>
+                </div>
+                
+                <p class="bio">
+                    Olá! Sou desenvolvedor web e estou aprendendo HTML e CSS. 
+                    Gosto de criar sites simples e funcionais.
+                </p>
+                
+                <div class="profile-info">
+                    <p><strong>Email:</strong> joao.silva@email.com</p>
+                    <p><strong>Cidade:</strong> São Paulo, SP</p>
+                </div>
+            </section>
+            
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h3>Habilidades</h3>
+                <div class="skills">
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">Git</div>
+                </div>
+                
+                <h3 style="margin-top: 20px;">Interesses</h3>
+                <div class="skills">
+                    <div class="skill" style="background: #3498db;">Tecnologia</div>
+                    <div class="skill" style="background: #2ecc71;">Música</div>
+                    <div class="skill" style="background: #9b59b6;">Esportes</div>
+                </div>
+            </aside>
+        </main>
+        
+        <!-- Rodapé -->
+        <footer class="footer">
+            <p>© 2023 - Todos os direitos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>

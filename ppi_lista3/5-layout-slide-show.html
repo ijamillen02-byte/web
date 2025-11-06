@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: #1a1a1a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .gallery {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            max-width: 1000px;
+            height: 300px;
+        }
+        
+        .image-item {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: flex 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .image-item:hover {
+            flex: 2;
+        }
+        
+        .image-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .image-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px 10px 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .image-item:hover .image-title {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery">
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Montanhas">
+            <div class="image-title">Montanhas</div>
+        </div>
+        
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Praia">
+            <div class="image-title">Praia</div>
+        </div>
+        
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Floresta">
+            <div class="image-title">Floresta</div>
+        </div>
+        
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Pôr do Sol">
+            <div class="image-title">Pôr do Sol</div>
+        </div>
+        
+        <div class="image-item">
+            <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Cidade">
+            <div class="image-title">Cidade</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -28,18 +28,41 @@
             transform: translate(-50%, -50%);
         }
         #alemanha{
-            display:inline;
-        }
-        .preto, .vermelho, .amarelo{
-            width: 300px;
             display: flex;
             flex-direction: column;
-            border: 1px solid #000000;
-            overflow: hidden;
-            flex: 1;
 
         }
-    
+        #alemanha > div.preto{
+            height: 33.33%;
+            background-color: black;;
+        }
+        #alemanha > div.vermelho{
+            height: 33.33%;
+            background-color: red;;
+        }
+        #alemanha > div.amarelo{
+            height: 33.33%;
+            background-color: yellow;;
+        }
+
+        #holanda{
+            display: flex;
+            flex-direction: column;
+        }
+        #holanda > div.vermelho{
+            height: 33.33%;
+            background-color: red;;
+        }
+        #holanda > div.branca{
+            height: 33.33%;
+            background-color: white;;
+        }
+        #holanda > div.azul{
+            height: 33.33%;
+            background-color: blue;;
+        }
+
+
 
         #italia{
             display: flex;
@@ -58,6 +81,56 @@
             background-color: red;  
 
         }
+        #brasil{
+            position: relative;
+        }
+        #brasil > div.verde{
+            width: 100%;
+            height: 100%;
+            background-color: green;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        #brasil > div.amarelo{
+            width: 100px;
+            height: 100px;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 100px solid yellow;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 100%;
+            left: 100%;
+            transform: translate(-50%, -50%) rotate(70deg);
+            z-index: 2;
+        }
+        #brasil > div.azul{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        #brasil > div.branco{
+            width: 100px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            z-index: 4;
+        }
+        
     </style>
 </head>
 <body>
@@ -71,6 +144,11 @@
         <div class="vermelho"></div>
         <div class="amarelo"></div>
 
+    </div>
+    <div class="bandeira" id="holanda">
+        <div class="vermelho"></div>
+        <div class="branca"></div>
+        <div class="azul"></div>
     </div>
 
     <div class="bandeira" id="italia">

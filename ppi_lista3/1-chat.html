@@ -1,11 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chat Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .chat-header {
+            background-color: #4a6fa5;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .chat-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .status {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4cd964;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        
+        .chat-messages {
+            padding: 15px;
+            height: 400px;
+            overflow-y: auto;
+            background-color: #f7f9fc;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            clear: both;
+            position: relative;
+        }
+        
+        .message-content {
+            padding: 10px 15px;
+            border-radius: 18px;
+            max-width: 80%;
+            position: relative;
+        }
+        
+        .received {
+            float: left;
+        }
+        
+        .received .message-content {
+            background-color: #e5e5ea;
+            color: #000;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .sent {
+            float: right;
+        }
+        
+        .sent .message-content {
+            background-color: #4a6fa5;
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .message-time {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+            position: absolute;
+            bottom: -15px;
+        }
+        
+        .received .message-time {
+            left: 10px;
+        }
+        
+        .sent .message-time {
+            right: 10px;
+        }
+        
+        .chat-input {
+            padding: 15px;
+            background-color: white;
+            border-top: 1px solid #e5e5e5;
+            display: flex;
+            position: relative;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #e5e5e5;
+            border-radius: 24px;
+            outline: none;
+            font-size: 14px;
+        }
+        
+        .send-button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .typing-indicator {
+            padding: 5px 15px;
+            font-size: 12px;
+            color: #999;
+            font-style: italic;
+            position: absolute;
+            bottom: 60px;
+            left: 15px;
+        }
+        
+        .online-users {
+            position: absolute;
+            left: -150px;
+            top: 0;
+            width: 140px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        
+        .online-users h3 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #4a6fa5;
+        }
+        
+        .user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .user-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #e5e5ea;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .user-name {
+            font-size: 13px;
+        }
+        
+        .user-status {
+            width: 8px;
+            height: 8px;
+            background-color: #4cd964;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Chat em Grupo</h2>
+            <div class="status">
+                <div class="status-dot"></div>
+                <span>Online</span>
+            </div>
+        </div>
+        
+        <div class="chat-messages">
+            <div class="message received">
+                <div class="message-content">
+                    Olá pessoal, como estão?
+                </div>
+                <div class="message-time">10:05</div>
+            </div>
+            
+            <div class="message sent">
+                <div class="message-content">
+                    Tudo bem! E você?
+                </div>
+                <div class="message-time">10:06</div>
+            </div>
+            
+            <div class="message received">
+                <div class="message-content">
+                    Estou bem também, obrigado! Alguém já viu o novo projeto?
+                </div>
+                <div class="message-time">10:07</div>
+            </div>
+            
+            <div class="message sent">
+                <div class="message-content">
+                    Ainda não, mas estou ansioso para ver.
+                </div>
+                <div class="message-time">10:08</div>
+            </div>
+            
+            <div class="message received">
+                <div class="message-content">
+                    Vamos marcar uma reunião para discutir os detalhes?
+                </div>
+                <div class="message-time">10:10</div>
+            </div>
+            
+            <div class="message sent">
+                <div class="message-content">
+                    Boa ideia! Que tal amanhã às 14h?
+                </div>
+                <div class="message-time">10:11</div>
+            </div>
+            
+            <div class="typing-indicator">Joana está digitando...</div>
+        </div>
+        
+        <div class="chat-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button class="send-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M22 2L11 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="online-users">
+            <h3>Online (3)</h3>
+            <div class="user">
+                <div class="user-avatar">MB</div>
+                <div class="user-name">Maria Beatriz</div>
+                <div class="user-status"></div>
+            </div>
+            <div class="user">
+                <div class="user-avatar">JB</div>
+                <div class="user-name">Joana Barbosa</div>
+                <div class="user-status"></div>
+            </div>
+            <div class="user">
+                <div class="user-avatar">PC</div>
+                <div class="user-name">Pedro Costa</div>
+                <div class="user-status"></div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
