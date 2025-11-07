@@ -34,7 +34,6 @@
             min-height: 100vh;
         }
         
-        /* Desktop - Layout principal */
         @media screen and (min-width: 1024px) {
             .container {
                 grid-template-columns: 200px 437px 200px;
@@ -52,7 +51,6 @@
             }
         }
         
-        /* Tablet */
         @media screen and (max-width: 1023px) and (min-width: 768px) {
             .container {
                 grid-template-areas: 
@@ -77,7 +75,6 @@
             }
         }
         
-        /* Mobile */
         @media screen and (max-width: 767px) {
             .container {
                 grid-template-areas: 
@@ -103,7 +100,6 @@
             }
         }
         
-        /* Estilos comuns para todas as seções */
         .header {
             grid-area: header;
             background: #9ac2eb;
@@ -205,19 +201,19 @@
 <body>
     <div class="container">
         <header class="header">
-            Header
+     
         </header>
         
         <section class="banner">
-            Banner
+         
         </section>
         
         <aside class="left-aside">
-            Left Aside
+         
         </aside>
         
         <main class="main-content">
-            <div class="box-title">Main Content</div>
+            <div class="box-title"></div>
             <div class="dimensions" id="main-dimensions">
                 
             </div>
@@ -227,11 +223,11 @@
         </main>
         
         <aside class="right-aside">
-            Right Aside
+            
         </aside>
         
         <section class="low-content">
-            <div class="box-title">Low Content</div>
+            <div class="box-title"></div>
             <div class="dimensions" id="low-dimensions">
             </div>
             <div style="margin-top: 15px; text-align: center;">
@@ -240,30 +236,11 @@
         </section>
         
         <footer class="footer">
-            Footer
+            
         </footer>
     </div>
 
-    <script>
-        // Atualiza as dimensões exibidas conforme o tamanho da tela
-        function updateDimensions() {
-            const mainContent = document.querySelector('.main-content');
-            const lowContent = document.querySelector('.low-content');
-            const mainDimensions = document.getElementById('main-dimensions');
-            const lowDimensions = document.getElementById('low-dimensions');
-            
-            const mainWidth = Math.round(mainContent.offsetWidth);
-            const mainHeight = Math.round(mainContent.offsetHeight);
-            const lowWidth = Math.round(lowContent.offsetWidth);
-            const lowHeight = Math.round(lowContent.offsetHeight);
-            
-            mainDimensions.textContent = `Width: ${mainWidth}px, Height: ${mainHeight}px`;
-            lowDimensions.textContent = `Width: ${lowWidth}px, Height: ${lowHeight}px`;
-        }
-        
-        // Atualiza as dimensões quando a página carrega e quando redimensiona
-        window.addEventListener('load', updateDimensions);
-        window.addEventListener('resize', updateDimensions);
-    </script>
+
+
 </body>
 </html>
