@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let i=0;
+        b=document.createElement("button")
+        b.innerHTML="click em mim!"
+        document.body.appendChild(b)
+             p=document.createElement("p");
+             p.id="texto"
+              document.body.appendChild(p)
+
+        b.addEventListener("click", ()=>{
+         i++;
+            p.innerHTML=i
+        })
+
+        
+      /*  
+      °forma de farzer
+      let body=document.body;
+       body.innerHTML=`<button> click aqui </button>`;
+       */
+      
+    </script>
+    
+</body>
+</html>

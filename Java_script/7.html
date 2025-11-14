@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            height: 100vh;
+        }
+        div{
+        border: 1px solid black;
+        flex-grow: 1;
+    }
+    </style>
+</head>
+<body>
+   <!--  div#div-$*5 -->
+       <div id="div-1"></div>
+       <div id="div-2"></div>
+       <div id="div-3"></div>
+       <div id="div-4"></div>
+       <div id="div-5"></div>
+
+       <script>
+        divs=document.querySelectorAll("div");
+        document.body.addEventListener("keydown", () => {
+            divs.forEach((elemento) =>{
+                 cor=  `rgb(${randColor()},${randColor()},${randColor()} )`
+           console.log(cor)
+          elemento.style.backgroundColor=cor;
+
+
+            })
+           
+
+
+        })
+        function randColor(){
+            r=(Math.random() *255).toFixed(0);
+            console.log(r);
+            return r;
+        }
+       </script>
+</body>
+</html>

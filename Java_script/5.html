@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="texto"></div>
+
+    <script>
+        div=document.querySelector(".texto");
+        document.body.addEventListener("keydown",(event) =>{
+            console.log(event);
+            div.innerHTML+=event.key;
+
+        })
+    </script>
+    
+</body>
+</html>
