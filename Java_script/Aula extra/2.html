@@ -10,15 +10,16 @@
             flex-direction: column;
         }
         #listagem{
-            background-color: darkgray;
-            border: 4px groove black;
+            background-color: rgb(208, 247, 240);
+            border: 4px groove rgb(255, 0, 0);
         }
     </style>
 </head>
 <body>
+    <button id="limpar">limpar localstorage</button>
     <div id="formulario">
         <label for="id">ID</label>
-        <input type="text" name="id" id="id">
+        <input type="text" name="id" id="readonly">
         <br>
         
         <label for="nome">Nome</label>
@@ -43,16 +44,27 @@
         let listagem=document.querySelector("#listagem");
 
         let button=document.querySelector("#botaoSalvar");
-        var listaNomes=[];
+        let buttonlimpar=document.querySelector("limpar");
+
+            if(localStorage.getItem("listaNomes")){
+                listaNomes=JSON.parse(localStorage.getItem("listaNomes"));
+            } else{
+                listaNomes={};
+            }
         button.addEventListener("click", ()=>{
+            let maxid=listaNomes
             listaNomes.push({
                 "id":inputid.value,
                 "nome":inputnome.value,
-                "email":inputemail.value
+                "email":inputemail.value,
             });
-            //listaNomes.push(Number.parseInt(inputid.value), inputnome.value, inputemail.value);
             console.log(listaNomes);
             listagemPessoas()
+            
+            //listaNomes.push(Number.parseInt(inputid.value), inputnome.value, inputemail.value);
+            console.log(JSON.stringify(listaNomes));
+        
+            localStorage.setItem("listaNomes", JSON.stringify(listaNomes));
         })
 
         function listagemPessoas(){
