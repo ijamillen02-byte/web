@@ -3,9 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>O que é JavaScript?</title>
 </head>
 <body>
-    
+    <h1>O que é JavaScript?</h1>
+    <p> <strong>A.</strong> O sites possuiam documentos html estáticos, com pouca ou até sem imagens, essa sendo a razão e inspiração para os pesquisadores buscarem algo que os usuários pudessem interagir.</p>
+    <br>
+    <p><strong>B.</strong> Enquando a execução no navegador é feita no computador e dentro de um ambiente do navegador, a no Servidor, o código é processado no servidor web remoto.</p>
+    <br>
+    <p><strong>C.</strong> É um mecanismo de segurança que isola os processos de execução do navegador, do sistema operacional do computador.</p>
+    <br>
+    <p><strong>D.</strong> Eles são propriedades do window: <br> </p>
+    <p><span>Document:</span> representa o Document Object Model, e fornece métodos e propriedades para acessar e manipular a estrutura, o conteúdo e seu estilo.<br></p>
+   
+    <div class="console">
+    <p> <span>Console:</span> fornece acesso a um interface de depuração do navegador, oferecendo métodos de registrar informações, erros, avisos e outros dados. <br></p>
+    </div>
+    <div class="code-block">console.warn("Este é um aviso");
+        console.error("Este é um erro");
+    </div>
+
+   <div class="alert">
+   <p><span>Alert:</span> exibe uma caixa de diálogo com uma mensagem e um botão OK.</p>
+   <div class="code-block">Exibir um alerta alert("Seja bem vindo!);</div>
+
+</div>
+<div class="exemple">
+    <h3>Hora atual</h3>
+    <p>A hora atual é: <span id="hora-atual" class="time-display"></span></p>
+</div>
+<script>
+window.onload = function(){
+    alert("Seja bem vindo!");
+
+    console.log("A página foi carregada com sucesso!");
+
+    atualizarHora();
+    setInterval(atualizarHora, 1000);
+}
+
+function atualizarHora(){
+    const agora =  new date();
+    const horaFormatada = agora.toLocaleTimeString();
+    document.getElementById("hora-atual").innerHTML = horaFormatada;
+}
+
+document.getElementById("botao-alerta").addEventListener("click", function(){
+    alert("Botão de exemplo");
+})
+document.getElementById("botao-console").addEventListener("click", function(){
+    console.log("Botão 'console' foi clicado.");
+    console.log("Clicar" + new Date(toLocaleTimeString()));
+});
+ document.getElementById("botao-atualizar").addEventListener("click", function() {
+            atualizarHora();
+    console.log("Hora atualizada manualmente!");
+    });
+        
+document.getElementById("exemplo-document").innerHTML = "Este texto foi alterado pelo JavaScript usando document.getElementById().innerHTML";
+
+</script>
 </body>
 </html>
