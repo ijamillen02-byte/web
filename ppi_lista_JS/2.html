@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tipos</title>
+</head>
+<body>
+    <button onclick="mostrarTipos()">Mostrar Tipos</button>
+    
+    <p id="pstring"></p>
+    <p id="pnumero"></p>
+    <p id="pboolean"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+    <p id="pobject"></p>
+    <p id="parray"></p>
+    
+    <div id="operacoes"></div>
+
+    <script>
+        function mostrarTipos() {
+            /* Definição de variáveis */
+            let texto = "exemplo";
+            let numero = 10;
+            let booleano = true;
+            let indefinido;
+            let nulo = null;
+            let objeto = {nome: "teste"};
+            let array = [1, 2, 3];
+            
+            document.getElementById("pstring").innerText = "String: " + typeof texto;
+            document.getElementById("pnumero").innerText = "Number: " + typeof numero;
+            document.getElementById("pboolean").innerText = "Boolean: " + typeof booleano;
+            document.getElementById("pundefined").innerText = "Undefined: " + typeof indefinido;
+            document.getElementById("pnull").innerText = "Null: " + typeof nulo;
+            document.getElementById("pobject").innerText = "Object: " + typeof objeto;
+            document.getElementById("parray").innerText = "Array: " + typeof array;
+            
+            let div = document.getElementById("operacoes");
+            div.innerHTML = "";
+            
+            let r1 = texto + numero;
+            div.innerHTML += "texto + numero = " + r1 + "<br>";
+            div.innerHTML += "→ numero vira texto<br><br>";
+            
+            let r2 = booleano * numero;
+            div.innerHTML += "booleano * numero = " + r2 + "<br>";
+            div.innerHTML += "→ true vira 1<br><br>";
+            
+            let r3 = texto + booleano;
+            div.innerHTML += "texto + booleano = " + r3 + "<br>";
+            div.innerHTML += "→ booleano vira texto<br><br>";
+            
+            let r4 = numero + indefinido;
+            div.innerHTML += "numero + indefinido = " + r4 + "<br>";
+            div.innerHTML += "→ undefined vira NaN<br><br>";
+            
+            let r5 = booleano + nulo;
+            div.innerHTML += "booleano + nulo = " + r5 + "<br>";
+            div.innerHTML += "→ true=1, null=0<br><br>";
+            
+            let r6 = objeto + texto;
+            div.innerHTML += "objeto + texto = " + r6 + "<br>";
+            div.innerHTML += "→ objeto vira [object Object]<br><br>";
+            
+            let r7 = array + numero;
+            div.innerHTML += "array + numero = " + r7 + "<br>";
+            div.innerHTML += "→ array vira 1,2,3<br><br>";
+            
+            console.log("texto + numero:", r1);
+            console.log("booleano * numero:", r2);
+            console.log("texto + booleano:", r3);
+            console.log("numero + indefinido:", r4);
+            console.log("booleano + nulo:", r5);
+            console.log("objeto + texto:", r6);
+            console.log("array + numero:", r7);
+        }
+    </script>
+</body>
+</html>
