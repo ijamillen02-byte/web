@@ -1,0 +1,45 @@
+Linguagem Interpretada: É processada, precisa ser entendido antes de ser executado; (Mais portabilidade)    |
+Linguagem Compilada: Ela é compilada para rodar diretamente no har; (Mais desempenho)                       |
+                                                                                                            |
+JavaScript: Interpretada > overhead                                                                         |
+-------------------------------------------------------------------------------------------------------------
+
+Servidor - Node - Fora da SandBOX;
+JS - System
+
+SandBOX
+---------------------
+|        JS         |
+| Window.alert()    | imprimi um alerta na página
+|       .prompt()   | abre uma janela para o usuário escrever
+| Console.log       | imprimi mensagem no terminal da página
+|        .clear     | apagar o histórico do terminal
+---------------------
+
+.innerHTML = contéudo interno entre elemento selecionado;
+.createElement = cria um novo elemento;
+
+Tipos de Variáveis do JavaScript:
+    let i - 1 --> define uma variável i Numérica
+    var a = 1 --> define uma variável a Numérica
+    const pi = 3.141516 --> define uma variável constante
+
+-----------------------------------------------------------------------------------------------
+
+Estrutura de Dados:
+    1. number - apenas numeros
+    2. string - letras
+    3. object - conjunto de
+
+
+typeof() - pesquisar a estrutura de dados (number, string...)
+
+Coersão = Converter a estrutura de dados para outra (JavaScript faz isso automaticamente). 
+Exemplo:
+
+Nome="Ana" --> "string"
+Nome=1 --> muda para "Number"
+
+-----------------------------------------------------------------------------------------------
+
+localStorage.setItem("nome","Ana")

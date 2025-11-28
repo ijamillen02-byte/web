@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Filmes Omdb</title>
+</head>
+<body>
+    <h2>Busca de Filmes</h2>
+    
+    <label for="Título">Título do Filme:</label>
+    <input type="text" id="titulo" name="titulo">
+    <button id="buscar">Buscar</button>
+    
+    <div id="filmes"></div>
+    
+    <script>
+        let inputfilmes=document.querySelector("#titulo");
+        let divresultado=document.querySelector("#filmes");
+        let buscar=document.querySelector("#buscar");
+        
+
+        buscar.addEventListener("click", ()=>{
+            fetch("https://www.omdbapi.com/?s="+inputfilmes.value+"&apikey=f77bfada").then((response)=>{
+                return response.json();
+            }).then((data)=>{
+                console.log(data);
+
+                divresultado.innerHTML="";
+                data.Search.forEach((filme)=>{
+                let divfilme=`<div class="filme">
+                    <img src="${filme.Poster}" alt="${filme.Title}" class="imgPoster">
+                    <p class="filmeTitulo">${filme.Title}</p>
+                    <p class="filmeAno">${filme.Year}</p>
+                    </div>`
+
+                divresultado.innerHTML+=divfilme;
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>
