@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffa0cc 0%, #2575fc 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: rgba(255, 214, 238, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .display-tempo {
+            font-size: 64px;
+            font-weight: bold;
+            color: #c341f7;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgb(223, 0, 243);
+            letter-spacing: 2px;
+        }
+        
+        .controles {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .botao {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .botao:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .botao:active {
+            transform: translateY(-1px);
+        }
+        
+        #botao-iniciar {
+            background-color: #ff70ac;
+            color: white;
+            box-shadow: 0 4px 6px rgba(146, 166, 252, 0.904);
+        }
+        
+        #botao-pausar {
+            background-color: #83a9fc;
+            color: white;
+            box-shadow: 0 4px 6px rgba(247, 137, 219, 0.904);
+
+        }
+        
+        #botao-parar {
+            background-color: #ff70ac;
+            color: white;
+            box-shadow: 0 4px 6px rgba(146, 166, 252, 0.904);
+
+        }
+        
+        #botao-zerar {
+            background-color: #83a9fc;
+            color: white;
+            box-shadow: 0 4px 6px rgba(247, 137, 219, 0.904);
+        }
+        
+        .secao-pausas {
+            margin-top: 30px;
+            text-align: left;
+        }
+        
+        .titulo-secao {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2575fc;
+            padding-bottom: 5px;
+        }
+        
+        #lista-pausas {
+            list-style-type: none;
+            max-height: 200px;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        #lista-pausas li {
+            padding: 8px 12px;
+            margin-bottom: 8px;
+            color: #63008d;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .contador-pausas {
+            font-weight: bold;
+            color: #488bfd;
+        }
+        
+        .atalhos {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #f1f8ff;
+            border-radius: 10px;
+            font-size: 14px;
+            color: #0000009d;
+        }
+        
+        .item-atalho {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .tecla {
+            background-color: #fdcaff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 480px) {
+            .display-tempo {
+                font-size: 48px;
+            }
+            
+            .controles {
+                flex-wrap: wrap;
+            }
+            
+            .botao {
+                flex: 1;
+                min-width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cronômetro</h1>        
+        <div class="display-tempo" id="temporizador">00:00:00</div>
+        
+        <div class="controles">
+            <button id="botao-iniciar" class="botao">Iniciar (I)</button>
+            <button id="botao-pausar" class="botao">Pausar (P)</button>
+            <button id="botao-parar" class="botao">Parar (R)</button>
+            <button id="botao-zerar" class="botao">Zerar (Z)</button>
+        </div>
+        
+        <div class="secao-pausas">
+            <h2 class="titulo-secao">Paradas Registradas <span class="contador-pausas" id="contador-pausas">(0)</span></h2>
+            <ul id="lista-pausas">
+            </ul>
+        </div>
+        
+        <div class="atalhos">
+            <h3>Atalhos de Teclado</h3>
+            <div class="item-atalho">
+                <span>Iniciar</span>
+                <span class="tecla">I</span>
+            </div>
+            <div class="item-atalho">
+                <span>Pausar</span>
+                <span class="tecla">P</span>
+            </div>
+            <div class="item-atalho">
+                <span>Parar</span>
+                <span class="tecla">R</span>
+            </div>
+            <div class="item-atalho">
+                <span>Zerar</span>
+                <span class="tecla">Z</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const displayTempo = document.getElementById('temporizador');
+        const botaoIniciar = document.getElementById('botao-iniciar');
+        const botaoPausar = document.getElementById('botao-pausar');
+        const botaoParar = document.getElementById('botao-parar');
+        const botaoZerar = document.getElementById('botao-zerar');
+        const listaPausas = document.getElementById('lista-pausas');
+        const contadorPausas = document.getElementById('contador-pausas');
+        
+        let tempoInicio = 0;
+        let tempoDecorrido = 0;
+        let intervalo = null;
+        let executando = false;
+        let pausas = [];
+        
+        function formatarTempo(ms) {
+            const segundosTotais = Math.floor(ms / 1000);
+            const horas = Math.floor(segundosTotais / 3600);
+            const minutos = Math.floor((segundosTotais % 3600) / 60);
+            const segundos = segundosTotais % 60;
+            
+            return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
+        }
+        
+        function atualizarTemporizador() {
+            const tempoAtual = Date.now();
+            tempoDecorrido = tempoAtual - tempoInicio;
+            displayTempo.textContent = formatarTempo(tempoDecorrido);
+        }
+        
+        function iniciarTemporizador() {
+            if (!executando) {
+                tempoInicio = Date.now() - tempoDecorrido;
+                intervalo = setInterval(atualizarTemporizador, 100);
+                executando = true;
+            }
+        }
+        
+        function pausarTemporizador() {
+            if (executando) {
+                clearInterval(intervalo);
+                executando = false;
+                
+                const pausa = {
+                    tempo: tempoDecorrido,
+                    formatado: formatarTempo(tempoDecorrido)
+                };
+                pausas.push(pausa);
+                
+                atualizarListaPausas();
+            }
+        }
+        
+        function pararTemporizador() {
+            if (executando) {
+                clearInterval(intervalo);
+                executando = false;
+                
+                const parada = {
+                    tempo: tempoDecorrido,
+                    formatado: formatarTempo(tempoDecorrido)
+                };
+                pausas.push(parada);
+                
+                atualizarListaPausas();
+                
+                tempoDecorrido = 0;
+                displayTempo.textContent = formatarTempo(tempoDecorrido);
+            }
+        }
+        
+        function zerarTemporizador() {
+            clearInterval(intervalo);
+            executando = false;
+            tempoDecorrido = 0;
+            displayTempo.textContent = formatarTempo(tempoDecorrido);
+            pausas = [];
+            atualizarListaPausas();
+        }
+        
+        function atualizarListaPausas() {
+            listaPausas.innerHTML = '';
+            contadorPausas.textContent = `(${pausas.length})`;
+            
+            if (pausas.length === 0) {
+                const itemVazio = document.createElement('li');
+                itemVazio.textContent = 'Nenhuma parada registrada ainda';
+                itemVazio.style.color = '#999';
+                itemVazio.style.fontStyle = 'italic';
+                listaPausas.appendChild(itemVazio);
+            } else {
+                pausas.forEach((pausa, indice) => {
+                    const itemLista = document.createElement('li');
+                    itemLista.innerHTML = `
+                        <span>${indice + 1}. ${pausa.formatado}</span>
+                    `;
+                    listaPausas.appendChild(itemLista);
+                });
+            }
+        }
+        
+        document.addEventListener('keydown', (evento) => {
+            if (evento.target.tagName !== 'INPUT' && evento.target.tagName !== 'TEXTAREA') {
+                switch(evento.key.toLowerCase()) {
+                    case 's': 
+                        iniciarTemporizador();
+                        break;
+                    case 'p': 
+                        pausarTemporizador();
+                        break;
+                    case 't': 
+                        pararTemporizador();
+                        break;
+                    case 'r': 
+                        zerarTemporizador();
+                        break;
+                }
+            }
+        });
+        
+        botaoIniciar.addEventListener('click', iniciarTemporizador);
+        botaoPausar.addEventListener('click', pausarTemporizador);
+        botaoParar.addEventListener('click', pararTemporizador);
+        botaoZerar.addEventListener('click', zerarTemporizador);
+        
+        atualizarListaPausas();
+    </script>
+</body>
+</html>
