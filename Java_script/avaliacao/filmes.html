@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Filmes</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 50vh;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            margin: 50px;
+            background-color: rgb(2, 41, 56);
+        }
+           #buscar{
+            margin-left: 10px;
+            padding: 5px 25px;
+            background-color: #012531;
+            color: white;
+            border: none groove #ffffff;
+            cursor: pointer;
+        }
+        #titulo{
+            padding: 5px 70px;
+            width: 300px;
+            border: 3px solid #ccc;
+            border-radius: 5px;
+        }
+        #filmes{
+            margin-top: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .filme{
+            border: 2px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+            flex: 0 0 auto;
+
+        }
+        .imgPoster{
+            width: 100%;
+            height: auto;
+        }
+        .filmeTitulo{
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+            color:rgb(255, 255, 255);
+            padding: 5px;
+            background-color: #003142;
+        }
+        .filmeAno{
+            color: #000000;
+        }
+        .Busca{
+            background-color: #005fcc2d;
+            color: white;
+            padding: 20px 150px;
+            border: 10px groove #035d79;
+            margin-bottom: 20px;
+        }
+        .tituloPesquisa{
+            color: white;
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="Busca">
+        <h2>Busca de Filmes</h2>
+    </div>
+    
+    <div class="tituloPesquisa">
+        <label for="Título">Título do Filme:</label>
+    </div>
+    
+    <input type="text" id="titulo" name="titulo">
+    <button id="buscar">Buscar</button>
+    
+    <div id="filmes"></div>
+    
+    <script>
+        let inputfilmes=document.querySelector("#titulo");
+        let divresultado=document.querySelector("#filmes");
+        let buscar=document.querySelector("#buscar");
+        
+
+        buscar.addEventListener("click", ()=>{
+            fetch("https://www.omdbapi.com/?s="+inputfilmes.value+"&apikey=f77bfada").then((response)=>{
+                return response.json();
+            }).then((data)=>{
+                console.log(data);
+
+                divresultado.innerHTML="";
+                data.Search.forEach((filme)=>{
+                let divfilme=`<div class="filme">
+                    <img src="${filme.Poster}" alt="${filme.Title}" class="imgPoster">
+                    <p class="filmeTitulo">${filme.Title}</p>
+                    <p class="filmeAno">${filme.Year}</p>
+                    </div>`
+
+                divresultado.innerHTML+=divfilme;
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>

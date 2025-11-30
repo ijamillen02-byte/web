@@ -1,112 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
-</head>
-
-<style>
-    body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: rgb(188, 128, 245);
-    font-family: Arial, Helvetica;
-    }
-    #titulo{
-        justify-content: center;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .calculadora{
-        border: 4px solid #ff60f2dd;
-        border-radius: 10px;
-        padding: 20px;
-        background-color: rgb(255, 218, 218);
-        width: 300px;
-    }
-    .display{
-        width: 100%;
-        height: 50px;
-        background-color: rgb(209, 255, 251);
-        border: 2px solid #c4c3c3;
-        border-radius: 5px; 
-        font-size: 24px;
-        text-align: right;
-        padding: 0 10px;
-        margin-bottom: 15px;
-        box-sizing: border-box;
-    }
-    .botoes{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
-    }
-    button{
-        height: 50px;
+    <title>Minha Calculadora</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .calculadora {
+            border: 3px solid #ff0000;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
+            width: 300px;
+        }
+        
+        .display {
+            width: 100%;
+            height: 50px;
+            background-color: #eee;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 24px;
+            text-align: right;
+            padding: 0 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+        
+        .botoes {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        button {
+            height: 50px;
             font-size: 18px;
             border: 2px solid #ccc;
             border-radius: 5px;
             cursor: pointer;
             background-color: white;
-    }
-    button:hover{
-        background-color: #fdf5f5;
-    }
-    .numero{
-        background-color: rgb(219, 140, 255);
-    }
-    .operador{
-        background-color: rgb(247, 240, 120);
-    }
-    .igual{
-        background-color: rgb(255, 158, 250);
-    }
-    .limpar{
-        background-color: rgb(255, 166, 166);
-    }
-</style>
+        }
+        
+        button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .numero {
+            background-color: #e6e6e6;
+        }
+        
+        .operador {
+            background-color: #ffcccc;
+        }
+        
+        .igual {
+            background-color: #ff9999;
+        }
+        
+        .limpar {
+            background-color: #ffcc99;
+        }
+    </style>
+</head>
 <body>
-    <h2 id="titulo">Calculadora Online</h2>
-
     <div class="calculadora">
-   <div class="display" id="display">0</div>
-   <div class="botoes" id="botoes">
-         <button class="numero" id="zero">0</button>
-         <button class="numero" id="um">1</button>
-         <button class="numero" id="dois">2</button>
-         <button class="numero" id="tres">3</button>
-         <button class="numero" id="quatro">4</button>
-         <button class="numero" id="cinco">5</button>
-         <button class="numero" id="seis">6</button>
-         <button class="numero" id="sete">7</button>
-         <button class="numero" id="oito">8</button>
-         <button class="numero" id="nove">9</button>
-
-         <button class="operador" id="soma">+</button>
-         <button class="operador" id="subtracao">-</button>
-         <button class="operador" id="divisao">/</button>
-         <button class="operador" id="multiplicacao">*</button>
-         <button class="operador" id="ponto">.</button>
-         <button class="operador"  id="limpar">C</button>
-         <button class="operador" id="igual">=</button>
-   </div>
+        <div class="display" id="display">0</div>
+        <div class="botoes" id="botoes">
+            <button class="limpar" id="limpar">C</button>
+            <button class="operador" id="divisao">/</button>
+            <button class="operador" id="multiplicacao">*</button>
+            <button class="operador" id="subtracao">-</button>
+            
+            <button class="numero" id="sete">7</button>
+            <button class="numero" id="oito">8</button>
+            <button class="numero" id="nove">9</button>
+            <button class="operador" id="soma">+</button>
+            
+            <button class="numero" id="quatro">4</button>
+            <button class="numero" id="cinco">5</button>
+            <button class="numero" id="seis">6</button>
+            
+            <button class="numero" id="um">1</button>
+            <button class="numero" id="dois">2</button>
+            <button class="numero" id="tres">3</button>
+            <button class="igual" id="igual">=</button>
+            
+            <button class="numero" id="zero">0</button>
+            <button class="numero" id="ponto">.</button>
+        </div>
     </div>
 
     <script>
-         let displayValor = "0";
+        // Variáveis que vamos usar
+        let displayValor = "0";
         let primeiroNumero = null;
         let operador = null;
         let aguardandoSegundoNumero = false;
 
+        // Pega o elemento do display
         const display = document.getElementById('display');
 
+        // Função para atualizar o display
         function atualizarDisplay() {
             display.textContent = displayValor;
         }
 
+        // Função quando clica em um número
         function adicionarNumero(numero) {
             if (aguardandoSegundoNumero) {
                 displayValor = numero;
@@ -117,6 +125,7 @@
             atualizarDisplay();
         }
 
+        // Função quando clica no ponto decimal
         function adicionarPonto() {
             if (aguardandoSegundoNumero) {
                 displayValor = '0.';
@@ -127,6 +136,7 @@
             atualizarDisplay();
         }
 
+        // Função quando clica em um operador (+, -, *, /)
         function adicionarOperador(operadorSelecionado) {
             const valorInput = parseFloat(displayValor);
             
@@ -143,6 +153,7 @@
             atualizarDisplay();
         }
 
+        // Função que faz os cálculos
         function calcularResultado() {
             const segundoNumero = parseFloat(displayValor);
             
@@ -163,6 +174,7 @@
             return segundoNumero;
         }
 
+        // Função quando clica no igual
         function calcular() {
             if (operador && primeiroNumero !== null) {
                 const resultado = calcularResultado();
@@ -174,6 +186,7 @@
             }
         }
 
+        // Função para limpar tudo
         function limparTudo() {
             displayValor = '0';
             primeiroNumero = null;
@@ -182,56 +195,71 @@
             atualizarDisplay();
         }
 
-       
+        // Aqui conectamos os botões às funções - SEM onclick no HTML!
+        document.getElementById('limpar').addEventListener('click', limparTudo);
+        
+        document.getElementById('soma').addEventListener('click', function() {
+            adicionarOperador('+');
+        });
+        
+        document.getElementById('subtracao').addEventListener('click', function() {
+            adicionarOperador('-');
+        });
+        
+        document.getElementById('multiplicacao').addEventListener('click', function() {
+            adicionarOperador('*');
+        });
+        
+        document.getElementById('divisao').addEventListener('click', function() {
+            adicionarOperador('/');
+        });
+        
+        document.getElementById('igual').addEventListener('click', calcular);
+        document.getElementById('ponto').addEventListener('click', adicionarPonto);
+
+        // Conecta todos os números
         document.getElementById('zero').addEventListener('click', function() {
             adicionarNumero('0');
         });
+        
         document.getElementById('um').addEventListener('click', function() {
             adicionarNumero('1');
         });
+        
         document.getElementById('dois').addEventListener('click', function() {
             adicionarNumero('2');
         });
+        
         document.getElementById('tres').addEventListener('click', function() {
             adicionarNumero('3');
         });
+        
         document.getElementById('quatro').addEventListener('click', function() {
             adicionarNumero('4');
         });
+        
         document.getElementById('cinco').addEventListener('click', function() {
             adicionarNumero('5');
         });
+        
         document.getElementById('seis').addEventListener('click', function() {
             adicionarNumero('6');
         });
+        
         document.getElementById('sete').addEventListener('click', function() {
             adicionarNumero('7');
         });
+        
         document.getElementById('oito').addEventListener('click', function() {
             adicionarNumero('8');
         });
+        
         document.getElementById('nove').addEventListener('click', function() {
             adicionarNumero('9');
         });
 
-        document.getElementById('soma').addEventListener('click', function() {
-            adicionarOperador('+');
-        });
-        document.getElementById('subtracao').addEventListener('click', function() {
-            adicionarOperador('-');
-        });
-        document.getElementById('divisao').addEventListener('click', function() {
-            adicionarOperador('/');
-        });
-        document.getElementById('multiplicacao').addEventListener('click', function() {
-            adicionarOperador('*');
-        });
-        document.getElementById('ponto').addEventListener('click', adicionarPonto);
-        document.getElementById('limpar').addEventListener('click', limparTudo);
-        document.getElementById('igual').addEventListener('click', calcular);
-       
-        atualizarDisplay(); 
+        // Inicializa o display
+        atualizarDisplay();
     </script>
-
 </body>
 </html>
