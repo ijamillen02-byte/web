@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .campo {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #e8f5e8;
+        }
+        #imgPerfil {
+            max-width: 200px;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+        .classificacao {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de IMC</h1>
+        
+        <div class="campo">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" placeholder="Digite seu nome">
+        </div>
+        
+        <div class="campo">
+            <label for="peso">Peso (kg):</label>
+            <input type="number" id="peso" step="0.1" placeholder="Ex: 70.5">
+        </div>
+        
+        <div class="campo">
+            <label for="altura">Altura (m):</label>
+            <input type="number" id="altura" step="0.01" placeholder="Ex: 1.75">
+        </div>
+        
+        <button id="calcular">Calcular IMC</button>
+        
+        <div class="resultado">
+            <p id="resultadoIMC"></p>
+            <p id="classificacao" class="classificacao"></p>
+            <img id="imgPerfil" src="" alt="Perfil de IMC" style="display: none;">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("calcular").addEventListener("click", () => {
+            const nome = document.getElementById("nome").value;
+            const peso = parseFloat(document.getElementById("peso").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            
+            if (!nome || isNaN(peso) || isNaN(altura)) {
+                alert("Por favor, preencha todos os campos corretamente!");
+                return;
+            }
+            
+            const imc = peso / (altura * altura);
+            const imcFormatado = imc.toFixed(2);
+            
+            document.getElementById("resultadoIMC").innerHTML = 
+                `<strong>${nome}</strong>, seu IMC é: <strong>${imcFormatado}</strong>`;
+            
+            let classificacao = "";
+            let imagem = "";
+            
+            if (imc < 18.5) {
+                classificacao = "Abaixo do peso";
+                imagem = "magro.png";
+            } else if (imc >= 18.5 && imc < 24.9) {
+                classificacao = "Peso normal";
+                imagem = "normal.png";
+            } else if (imc >= 25 && imc < 29.9) {
+                classificacao = "Sobrepeso";
+                imagem = "sobrepeso.png";
+            } else if (imc >= 30 && imc < 34.9) {
+                classificacao = "Obesidade grau 1";
+                imagem = "obeso1.png";
+            } else if (imc >= 35 && imc < 39.9) {
+                classificacao = "Obesidade grau 2";
+                imagem = "obeso2.png";
+            } else {
+                classificacao = "Obesidade grau 3 (mórbida)";
+                imagem = "obeso3.png";
+            }
+            
+       
+            document.getElementById("classificacao").textContent = `Classificação: ${classificacao}`;
+        
+            const imcArredondado = Math.floor(imc);
+            let imagemSwitch = "";
+            
+            switch(true) {
+                case imcArredondado < 18:
+                    imagemSwitch = "magro.png";
+                    break;
+                case imcArredondado >= 18 && imcArredondado < 25:
+                    imagemSwitch = "normal.png";
+                    break;
+                case imcArredondado >= 25 && imcArredondado < 30:
+                    imagemSwitch = "sobrepeso.png";
+                    break;
+                case imcArredondado >= 30 && imcArredondado < 35:
+                    imagemSwitch = "obeso1.png";
+                    break;
+                case imcArredondado >= 35 && imcArredondado < 40:
+                    imagemSwitch = "obeso2.png";
+                    break;
+                default:
+                    imagemSwitch = "obeso3.png";
+            }
+            
+            const imgElement = document.getElementById("imgPerfil");
+            imgElement.src = `./imgs/${imagemSwitch}`;
+            imgElement.alt = `Perfil: ${classificacao}`;
+            imgElement.style.display = "block";
+            
+            console.log(`IMC: ${imcFormatado}`);
+            console.log(`Classificação: ${classificacao}`);
+            console.log(`Imagem: ${imagemSwitch}`);
+        });
+    </script>
+</body>
+</html>

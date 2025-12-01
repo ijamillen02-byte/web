@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteador de Números</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input {
+            margin: 10px;
+            padding: 8px;
+            width: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #lista {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sorteio de Números</h1>
+        
+        <div>
+            <label>Mínimo:</label>
+            <input type="number" id="minimo" value="1">
+        </div>
+        
+        <div>
+            <label>Máximo:</label>
+            <input type="number" id="maximo" value="100">
+        </div>
+        
+        <button id="sortear">Sortear</button>
+        
+        <div id="resultado"></div>
+        
+        <div id="lista">
+            <h3>Números sorteados:</h3>
+            <ul id="listaNumeros"></ul>
+        </div>
+    </div>
+
+    <script>
+        let sorteados = []; 
+        
+        let botao = document.querySelector("#sortear");
+        let resultado = document.querySelector("#resultado");
+        let listaNumeros = document.querySelector("#listaNumeros");
+        
+        botao.addEventListener("click", () => {
+            
+            let minimo = Number(document.querySelector("#minimo").value);
+            let maximo = Number(document.querySelector("#maximo").value);
+            
+            if (minimo >= maximo) {
+                resultado.innerHTML = "Erro: Mínimo deve ser menor que máximo!";
+                return;
+            }
+            
+            let numeroSorteado = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+          
+            let encontrado = sorteados.find(item => item.numero === numeroSorteado);
+            
+            if (encontrado) {
+
+                encontrado.vezes++;
+                resultado.innerHTML = `Número ${numeroSorteado} (já sorteado ${encontrado.vezes} vezes)`;
+            } else {
+            
+                sorteados.push({
+                    numero: numeroSorteado,
+                    vezes: 1
+                });
+                resultado.innerHTML = `Número sorteado: ${numeroSorteado}`;
+            }
+            
+            
+            atualizarLista();
+        });
+        
+        function atualizarLista() {
+            listaNumeros.innerHTML = ""; 
+            
+            sorteados.forEach(item => {
+                let li = document.createElement("li");
+                if (item.vezes > 1) {
+                    li.textContent = `${item.numero} (${item.vezes} vezes)`;
+                } else {
+                    li.textContent = `${item.numero}`;
+                }
+                listaNumeros.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>

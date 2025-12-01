@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Primos</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: white;
+            margin-top: 50px;
+        }
+        input {
+            margin: 10px;
+            padding: 8px;
+            width: 100px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #resultadoPrimos {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            min-height: 50px;
+            max-width: 400px;
+            word-wrap: break-word;
+        }
+        .primo {
+            display: inline-block;
+            background-color: #e8f5e8;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 5px;
+            border: 1px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Números Primos</h1>
+        
+        <div>
+            <label>Número Inicial:</label>
+            <input type="number" id="inicio" value="1">
+        </div>
+        
+        <div>
+            <label>Número Final:</label>
+            <input type="number" id="fim" value="100">
+        </div>
+        
+        <button id="verificar">Verificar Primos</button>
+        
+        <div id="resultadoPrimos"></div>
+    </div>
+
+    <script>
+        let botao = document.querySelector("#verificar");
+        let resultado = document.querySelector("#resultadoPrimos");
+        
+        botao.addEventListener("click", () => {
+           
+            let inicio = Number(document.querySelector("#inicio").value);
+            let fim = Number(document.querySelector("#fim").value);
+            
+            if (inicio < 1 || fim < 1 || inicio > fim) {
+                resultado.innerHTML = "Erro: Digite números válidos! (Início deve ser menor que Fim)";
+                return;
+            }
+            
+            let primos = [];
+            
+            for (let numero = inicio; numero <= fim; numero++) {
+                if (ehPrimo(numero)) {
+                    primos.push(numero);
+                }
+            }
+            
+            if (primos.length === 0) {
+                resultado.innerHTML = "Não foram encontrados números primos neste intervalo.";
+            } else {
+                resultado.innerHTML = `<strong>Números primos encontrados (${primos.length}):</strong><br>`;
+                primos.forEach(primo => {
+                    resultado.innerHTML += `<span class="primo">${primo}</span> `;
+                });
+            }
+        });
+        
+        function ehPrimo(numero) {
+            if (numero < 2) return false;
+            if (numero === 2) return true;
+            if (numero % 2 === 0) return false;
+            
+            for (let i = 3; i <= Math.sqrt(numero); i += 2) {
+                if (numero % i === 0) {
+                    return false;
+                }
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

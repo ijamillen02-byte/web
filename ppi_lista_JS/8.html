@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadrado alterando de cor</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .quadrado {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="quadrado" id="div-1"></div>
+    <div class="quadrado" id="div-2"></div>
+    <div class="quadrado" id="div-3"></div>
+    <div class="quadrado" id="div-4"></div>
+    <div class="quadrado" id="div-5"></div>
+
+    <script>
+        divs = document.querySelectorAll(".quadrado");
+        
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "Space") {
+                divs.forEach((elemento) => {
+                    cor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+                    elemento.style.backgroundColor = cor;
+                })
+            }
+        })
+    </script>
+</body>
+</html>
