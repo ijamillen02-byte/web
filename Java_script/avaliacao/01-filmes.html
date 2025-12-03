@@ -6,33 +6,33 @@
     <title>Buscar Filmes</title>
     <style>
         body{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            height: 50vh;
+            display: flex; /*flexbox para o layout*/
+            flex-direction: column; /*Elemento verticais*/
+            align-items: center; /*Alinhar no centro*/
+            height: 50vh; /*Altura*/
             font-family: 'Franklin Gothic Medium', sans-serif;
             margin: 50px;
-            background-color: rgb(68, 0, 77);
+            background-color: rgb(68, 0, 77); /*cor de fundo*/
         }
            #buscar{
-            margin-left: 10px;
-            padding: 5px 25px;
+            margin-left: 10px; 
+            padding: 5px 25px; /*preenchimento*/
             background-color: #8d1991;
             color: white;
             border: none groove #80118afb;
-            cursor: pointer;
+            cursor: pointer; /* cursor da maozinha */
         }
         #titulo{
             padding: 5px 70px;
             width: 300px;
             border: 3px solid #f7caeb;
-            border-radius: 5px;
+            border-radius: 5px; /*bordas arredondadas*/
         }
         #filmes{
             margin-top: 50px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-wrap: wrap; /*quebra de linha*/
+            gap: 20px; /*espaçamento entre os itens*/
             justify-content: center;
             width: 100%;
             max-width: 1200px;
@@ -91,9 +91,9 @@
     <div id="filmes"></div>
     
     <script>
-        let inputfilmes=document.querySelector("#titulo");
-        let divresultado=document.querySelector("#filmes");
-        let buscar=document.querySelector("#buscar");
+        let inputfilmes=document.querySelector("#titulo"); /*digitar o título do filme*/
+        let divresultado=document.querySelector("#filmes"); /*onde vai aparecer os resul*/
+        let buscar=document.querySelector("#buscar"); /*botão de buscar*/
         
 
         buscar.addEventListener("click", ()=>{
