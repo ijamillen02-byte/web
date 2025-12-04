@@ -104,7 +104,7 @@
 
     <script>
          let displayValor = "0";
-        let primeiroNumero = null;
+        let primeiroNumero = null; /*guarda o primeiro número da operação*/
         let operador = null;
         let aguardandoSegundoNumero = false;
 
@@ -116,9 +116,9 @@
             expressao = primeiroNumero + " " + operador + " " + displayValor;
         } else {
             expressao = displayValor;
-        }
+        }/* mostra a expressão completa no display  caso operação esteja em andamento*/
         display.textContent = expressao;
-        }
+        } /*atualiza o display com o valor atual*/
         
         function adicionarNumero(numero) {
             if (aguardandoSegundoNumero) {
@@ -126,7 +126,7 @@
                 aguardandoSegundoNumero = false;
             } else {
                 displayValor = displayValor === '0' ? numero : displayValor + numero;
-            }
+            } /*aguardando o segundo número da operação, se não concatena com o que ja tem*/
             atualizarDisplay();
         }
 
@@ -136,19 +136,19 @@
                 aguardandoSegundoNumero = false;
             } else if (!displayValor.includes('.')) {
                 displayValor += '.';
-            }
+            } /*adiciona um ponto decimal*/
             atualizarDisplay();
         }
 
         function adicionarOperador(operadorSelecionado) {
-            const valorInput = parseFloat(displayValor);
+            const valorInput = parseFloat(displayValor); /*converte o valor do display para número*/
             
             if (primeiroNumero === null) {
-                primeiroNumero = valorInput;
+                primeiroNumero = valorInput; /*amazena, se 1° num*/
             } else if (operador) {
                 const resultado = calcularResultado();
                 displayValor = String(resultado);
-                primeiroNumero = resultado;
+                primeiroNumero = resultado;/*dar o resulta, se tiver em andamento*/
             }
             
             operador = operadorSelecionado;
@@ -157,7 +157,7 @@
         }
 
         function calcularResultado() {
-            const segundoNumero = parseFloat(displayValor);
+            const segundoNumero = parseFloat(displayValor); /*converte o valor do 2° num*/
             
             if (operador === '+') {
                 return primeiroNumero + segundoNumero;
@@ -169,7 +169,7 @@
                 if (segundoNumero === 0) {
                     alert("Não pode dividir por zero!");
                     return primeiroNumero;
-                }
+                } /*===igualdade estrita*/
                 return primeiroNumero / segundoNumero;
             }
             

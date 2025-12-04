@@ -215,8 +215,8 @@
 
     <script>
 
-        const displayTempo = document.getElementById('temporizador');
-        const botaoIniciar = document.getElementById('botao-iniciar');
+        const displayTempo = document.getElementById('temporizador'); /*referencias de tempo*/
+        const botaoIniciar = document.getElementById('botao-iniciar');/*botao*/
         const botaoPausar = document.getElementById('botao-pausar');
         const botaoParar = document.getElementById('botao-parar');
         const botaoZerar = document.getElementById('botao-zerar');
@@ -225,9 +225,9 @@
         
         let tempoInicio = 0;
         let tempoDecorrido = 0;
-        let intervalo = null;
-        let executando = false;
-        let pausas = [];
+        let intervalo = null; /*intervalo de atualização*/
+        let executando = false; /*indicativo de estado*/
+        let pausas = []; /*array p amarzenar pausas*/
         
         function formatarTempo(ms) {
             const segundosTotais = Math.floor(ms / 1000);
@@ -236,7 +236,7 @@
             const segundos = segundosTotais % 60;
             
             return `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
-        }
+        } /*retorna o tempo formatado como HH:MM:SS*/
         
         function atualizarTemporizador() {
             const tempoAtual = Date.now();
@@ -249,13 +249,13 @@
                 tempoInicio = Date.now() - tempoDecorrido;
                 intervalo = setInterval(atualizarTemporizador, 100);
                 executando = true;
-            }
+            } /*inicia se não estiver em execução*/
         }
         
         function pausarTemporizador() {
             if (executando) {
                 clearInterval(intervalo);
-                executando = false;
+                executando = false; /*pausa e registra*/
                 
                 const pausa = {
                     tempo: tempoDecorrido,
@@ -295,15 +295,15 @@
         }
         
         function atualizarListaPausas() {
-            listaPausas.innerHTML = '';
-            contadorPausas.textContent = `(${pausas.length})`;
+            listaPausas.innerHTML = ''; /*limpa a lista*/
+            contadorPausas.textContent = `(${pausas.length})`; /*atualiza contador*/
             
             if (pausas.length === 0) {
                 const itemVazio = document.createElement('li');
                 itemVazio.textContent = 'Nenhuma parada registrada ainda';
                 itemVazio.style.color = '#999';
                 itemVazio.style.fontStyle = 'italic';
-                listaPausas.appendChild(itemVazio);
+                listaPausas.appendChild(itemVazio); /*lista vazia, exibe mensagem*/
             } else {
                 pausas.forEach((pausa, indice) => {
                     const itemLista = document.createElement('li');
@@ -315,10 +315,10 @@
             }
         }
         
-        document.addEventListener('keydown', (evento) => {
+        document.addEventListener('keydown', (evento) => { /*atalhos de teclado*/
             if (evento.target.tagName !== 'INPUT' && evento.target.tagName !== 'TEXTAREA') {
                 switch(evento.key.toLowerCase()) {
-                    case 's': 
+                    case 'i': 
                         iniciarTemporizador();
                         break;
                     case 'p': 
@@ -338,7 +338,7 @@
         botaoPausar.addEventListener('click', pausarTemporizador);
         botaoParar.addEventListener('click', pararTemporizador);
         botaoZerar.addEventListener('click', zerarTemporizador);
-        
+        /*conecta botões às funções*/
         atualizarListaPausas();
     </script>
 </body>

@@ -91,19 +91,20 @@
     <div id="filmes"></div>
     
     <script>
-        let inputfilmes=document.querySelector("#titulo"); /*digitar o título do filme*/
+        let inputfilmes=document.querySelector("#titulo"); /* digitar o título do filme*/
         let divresultado=document.querySelector("#filmes"); /*onde vai aparecer os resul*/
         let buscar=document.querySelector("#buscar"); /*botão de buscar*/
         
 
-        buscar.addEventListener("click", ()=>{
+        buscar.addEventListener("click", ()=>{ /*evento de clique no botão buscar*/
             fetch("https://www.omdbapi.com/?s="+inputfilmes.value+"&apikey=f77bfada").then((response)=>{
-                return response.json();
+            /*requisição http para a api - concatena o valor de busca*/ 
+                return response.json(); /*converte a resposta para json*/
             }).then((data)=>{
                 console.log(data);
 
-                divresultado.innerHTML="";
-                data.Search.forEach((filme)=>{
+                divresultado.innerHTML=""; /*limpa os resultados anteriores*/
+                data.Search.forEach((filme)=>{ 
                 let divfilme=`<div class="filme">
                     <img src="${filme.Poster}" alt="${filme.Title}" class="imgPoster">
                     <p class="filmeTitulo">${filme.Title}</p>
@@ -111,6 +112,7 @@
                     </div>`
 
                 divresultado.innerHTML+=divfilme;
+                /*adiciona cada filme encontrado na div de resultados*/
                 })
             })
         })
