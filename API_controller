@@ -1,0 +1,31 @@
+package org.example.calculadoraapi;
+
+import br.edu.ifsc.teste.CalculadoraNotas;
+import org.springframework.web.bind.annotation.*;
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/calculadora")
+public class CalculadoraController {
+
+    @PostMapping("/estatisticas")
+    public Map<String, Object> calcular(@RequestBody DadosEntrada entrada) {
+
+        CalculadoraNotas.ResultadoCalculadora r =
+                CalculadoraNotas.calcularEstatisticas(entrada.notas, entrada.pesos);
+
+        Map<String, Object> resp = new HashMap<>();
+        resp.put("maiorNota", r.maiorNota);
+        resp.put("menorNota", r.menorNota);
+        resp.put("mediaAritmetica", r.mediaAritmetica);
+        resp.put("mediaPonderada", r.temMediaPonderada ? r.mediaPonderada : null);
+
+        return resp;
+    }
+
+    public static class DadosEntrada {
+        public double[] notas;
+        public double[] pesos;
+    }
+}

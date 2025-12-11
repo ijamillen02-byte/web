@@ -1,0 +1,103 @@
+package br.edu.ifsc.teste;
+
+import java.util.Arrays;
+import java.util.OptionalDouble;
+
+public class CalculadoraNotas {
+
+    // Exceção personalizada
+    public static class CalculadoraException extends RuntimeException {
+        public CalculadoraException(String message) {
+            super(message);
+        }
+    }
+
+    // Classe/Record para o resultado do calculo completo
+    public static class ResultadoCalculadora {
+        public double maiorNota;
+        public double menorNota;
+        public double mediaAritmetica;
+        public double mediaPonderada;
+        public boolean temMediaPonderada = true;
+
+        public ResultadoCalculadora(double maiorNota, double menorNota, double mediaAritmetica, double mediaPonderada, boolean temMediaPonderada) {
+            this.maiorNota = maiorNota;
+            this.menorNota = menorNota;
+            this.mediaAritmetica = mediaAritmetica;
+            this.mediaPonderada = mediaPonderada;
+            this.temMediaPonderada = temMediaPonderada;
+        }
+    }
+
+    private static void validarNotas(double[] notas) {
+        if (notas == null || notas.length == 0) {
+            throw new CalculadoraException("O array de notas não pode ser nulo ou vazio.");
+        }
+    }
+
+    public static double encontrarMaiorNota(double[] notas) {
+        validarNotas(notas);
+        OptionalDouble maior = Arrays.stream(notas).max();
+        return maior.getAsDouble();
+    }
+
+    public static double encontrarMenorNota(double[] notas) {
+        validarNotas(notas);
+        OptionalDouble menor = Arrays.stream(notas).min();
+        return menor.getAsDouble();
+    }
+
+    public static double calcularMediaAritmetica(double[] notas) {
+        validarNotas(notas);
+        double soma = Arrays.stream(notas).sum();
+        return soma / notas.length;
+    }
+
+    public static double calcularMediaPonderada(double[] notas, double[] pesos) {
+        validarNotas(notas);
+
+        if (pesos == null || notas.length != pesos.length) {
+            throw new CalculadoraException("O array de pesos é nulo ou tem um tamanho diferente do array de notas.");
+        }
+
+        double somaProdutos = 0;
+        double somaPesos = 0;
+
+        for (int i = 0; i < notas.length; i++) {
+            if (pesos[i] < 0) {
+                throw new CalculadoraException("Pesos não podem ser negativos.");
+            }
+            somaProdutos += notas[i] * pesos[i];
+            somaPesos += pesos[i];
+        }
+
+        if (somaPesos == 0) {
+            return 0.0;
+        }
+
+        return somaProdutos / somaPesos;
+    }
+
+    public static ResultadoCalculadora calcularEstatisticas(double[] notas, double[] pesos) {
+        validarNotas(notas);
+
+        double maior = encontrarMaiorNota(notas);
+        double menor = encontrarMenorNota(notas);
+        double mediaAritmetica = calcularMediaAritmetica(notas);
+
+        double mediaPonderada = 0;
+        boolean temMediaPonderada = false;
+
+        if (pesos != null) {
+            try {
+                mediaPonderada = calcularMediaPonderada(notas, pesos);
+                temMediaPonderada = true;
+            } catch (CalculadoraException e) {
+                // Se o cálculo falhar (ex: pesos negativos/tamanho incorreto), não calcula a média ponderada.
+                temMediaPonderada = false;
+            }
+        }
+
+        return new ResultadoCalculadora(maior, menor, mediaAritmetica, mediaPonderada, temMediaPonderada);
+    }
+}

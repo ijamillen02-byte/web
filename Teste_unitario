@@ -1,0 +1,62 @@
+package br.edu.ifsc.teste;
+
+public class CalculadoraNotasTest {
+
+    // Sua classe de exceção
+    public static class CalculadoraException extends RuntimeException {
+        public CalculadoraException(String message) {
+            super(message);
+        }
+    }
+
+    // Sua classe de resultado
+    public static class ResultadoCalculadora {
+        public double maiorNota;
+        public double menorNota;
+        public double mediaAritmetica;
+        public double mediaPonderada;
+        public boolean temMediaPonderada = true;
+
+    }
+
+    // Método 1: Encontrar a maior nota
+    public static double encontrarMaiorNota(double[] notas) {
+        // Implemente a lógica: verificar se notas é vazio e depois encontrar o maior valor
+        if (notas == null || notas.length == 0) {
+            throw new CalculadoraException("O array de notas não pode ser vazio.");
+        }
+
+        // Exemplo de implementação:
+        double maior = notas[0];
+        for (double nota : notas) {
+            if (nota > maior) {
+                maior = nota;
+            }
+        }
+        return maior; // <-- O return statement agora está aqui
+    }
+
+    // Método 2: Encontrar a menor nota
+    public static double encontrarMenorNota(double[] notas) {
+        // Implemente a lógica aqui
+        throw new UnsupportedOperationException("Não implementado!");
+    }
+
+    // Método 3: Calcular Média Aritmética
+    public static double calcularMediaAritmetica(double[] notas) {
+        // Implemente a lógica aqui
+        throw new UnsupportedOperationException("Não implementado!");
+    }
+
+    // Método 4: Calcular Média Ponderada
+    public static double calcularMediaPonderada(double[] notas, double[] pesos) {
+        // Implemente a lógica aqui
+        throw new UnsupportedOperationException("Não implementado!");
+    }
+
+    // Método 5: Cálculo Completo
+    public static ResultadoCalculadora calcularEstatisticas(double[] notas, double[] pesos) {
+        // Implemente a lógica aqui
+        throw new UnsupportedOperationException("Não implementado!");
+    }
+}
