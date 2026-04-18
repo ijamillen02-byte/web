@@ -1,0 +1,26 @@
+Comandos testados no MongoDB Shell:
+
+1. Ver dados:
+   use escola
+   db.alunos.find().pretty()
+
+2. Buscar por turma:
+   db.alunos.find({ turma: "ADS-2024-1" })
+
+3. Média por disciplina:
+   db.alunos.aggregate([
+     { $unwind: "$disciplinas" },
+     { $group: { _id: "$disciplinas.nome", media: { $avg: "$disciplinas.media" } } }
+   ])
+
+4. Inserir:
+   db.alunos.insertOne({ _id: 99, nome: "Teste", turma: "TESTE", disciplinas: [], status: "ativo" })
+
+5. Atualizar:
+   db.alunos.updateOne({ _id: 1 }, { $push: { "disciplinas.0.notas": 10 } })
+
+6. Deletar:
+   db.alunos.deleteOne({ _id: 99 })
+
+7. Replace:
+   db.alunos.replaceOne({ _id: 2 }, { _id: 2, nome: "Novo", turma: "NOVA", status: "trocado" })

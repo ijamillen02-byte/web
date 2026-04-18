@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Alunos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Controle de Alunos</h1>
+        
+        <div class="menu">
+            <button class="btn-menu" onclick="mostrarAba('cadastrar')">Cadastrar</button>
+            <button class="btn-menu" onclick="mostrarAba('buscar')">Buscar</button>
+            <button class="btn-menu" onclick="mostrarAba('notas')">Atualizar Nota</button>
+            <button class="btn-menu" onclick="mostrarAba('estatisticas')">Estatísticas</button>
+            <button class="btn-menu" onclick="mostrarAba('substituir')">Substituir</button>
+        </div>
+        
+        <div id="cadastrar" class="aba">
+            <h2>Cadastrar Novo Aluno</h2>
+            <input type="text" id="nome" placeholder="Nome completo">
+            <input type="text" id="turma" placeholder="Turma">
+            <input type="number" id="n1" placeholder="Nota 1">
+            <input type="number" id="n2" placeholder="Nota 2">
+            <input type="number" id="n3" placeholder="Nota 3">
+            <button onclick="cadastrar()">Salvar</button>
+            <div id="resCadastro" class="resultado"></div>
+        </div>
+        
+        <div id="buscar" class="aba" style="display:none">
+            <h2>Buscar Alunos por Turma</h2>
+            <input type="text" id="turmaBusca" placeholder="Digite a turma">
+            <button onclick="buscar()">Pesquisar</button>
+            <button onclick="buscarTodos()">Ver Todos</button>
+            <div id="resBusca" class="resultado"></div>
+        </div>
+        
+        <div id="notas" class="aba" style="display:none">
+            <h2>Adicionar Nota a um Aluno</h2>
+            <input type="number" id="idAluno" placeholder="ID do aluno">
+            <input type="text" id="disciplinaNota" placeholder="Disciplina">
+            <input type="number" id="novaNota" placeholder="Nova nota">
+            <button onclick="atualizarNota()">Adicionar</button>
+            <div id="resNota" class="resultado"></div>
+        </div>
+        
+        <div id="estatisticas" class="aba" style="display:none">
+            <h2>Média por Disciplina</h2>
+            <button onclick="carregarEstatisticas()">Calcular Médias</button>
+            <div id="resEstatisticas" class="resultado"></div>
+        </div>
+        
+        <div id="substituir" class="aba" style="display:none">
+            <h2>Substituir Cadastro</h2>
+            <input type="number" id="idSubst" placeholder="ID do aluno">
+            <input type="text" id="nomeSubst" placeholder="Novo nome">
+            <input type="text" id="turmaSubst" placeholder="Nova turma">
+            <select id="statusSubst">
+                <option>matriculado</option>
+                <option>trancado</option>
+                <option>formado</option>
+            </select>
+            <button onclick="substituir()">Substituir</button>
+            <div id="resSubst" class="resultado"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

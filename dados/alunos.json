@@ -1,0 +1,51 @@
+[
+  {
+    "_id": 1,
+    "nome": "Ana Paula Souza",
+    "turma": "ADS-2024-1",
+    "disciplinas": [
+      {
+        "nome": "Banco de Dados II",
+        "notas": [7.5, 8.0, 9.0],
+        "media": 8.17
+      },
+      {
+        "nome": "Programação Web",
+        "notas": [8.0, 8.5, 9.5],
+        "media": 8.67
+      }
+    ],
+    "status": "matriculado"
+  },
+  {
+    "_id": 2,
+    "nome": "Carlos Henrique",
+    "turma": "ADS-2024-1",
+    "disciplinas": [
+      {
+        "nome": "Banco de Dados II",
+        "notas": [6.0, 7.0, 7.5],
+        "media": 6.83
+      }
+    ],
+    "status": "matriculado"
+  },
+  {
+    "_id": 3,
+    "nome": "Mariana Oliveira",
+    "turma": "ADS-2024-2",
+    "disciplinas": [
+      {
+        "nome": "Banco de Dados II",
+        "notas": [9.0, 9.5, 10.0],
+        "media": 9.5
+      },
+      {
+        "nome": "Programação Web",
+        "notas": [8.5, 9.0, 9.0],
+        "media": 8.83
+      }
+    ],
+    "status": "matriculado"
+  }
+]
