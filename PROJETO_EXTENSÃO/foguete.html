@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foguete no Universo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    height:100vh;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0,180,255,.15), transparent 25%),
+        radial-gradient(circle at 80% 40%, rgba(255,0,180,.15), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(140,0,255,.12), transparent 30%),
+        linear-gradient(to bottom, #02030a, #060b1f 40%, #000);
+    position:relative;
+}
+
+/* ESTRELAS */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    box-shadow:
+    50px 80px #fff,
+    150px 50px #fff,
+    250px 120px #fff,
+    350px 30px #fff,
+    450px 180px #fff,
+    550px 70px #fff,
+    650px 140px #fff,
+    750px 40px #fff,
+    850px 100px #fff,
+    950px 60px #fff,
+    1050px 180px #fff,
+    1150px 90px #fff,
+    1250px 140px #fff,
+    1350px 50px #fff,
+    1450px 120px #fff,
+    300px 250px #fff,
+    600px 320px #fff,
+    900px 260px #fff,
+    1200px 300px #fff,
+    1500px 220px #fff,
+    200px 450px #fff,
+    500px 520px #fff,
+    800px 470px #fff,
+    1100px 560px #fff,
+    1400px 430px #fff;
+}
+
+/* ESTRELAS CADENTES */
+.estrela,
+.estrela::after{
+    position:absolute;
+    content:"";
+    width:120px;
+    height:2px;
+    background:linear-gradient(to right, white, transparent);
+    transform:rotate(-35deg);
+}
+
+.estrela{
+    top:15%;
+    left:-150px;
+    animation:cadente 8s linear infinite;
+}
+
+.estrela::after{
+    top:250px;
+    left:700px;
+    animation:cadente 10s linear infinite 3s;
+}
+
+/* FOGUETE */
+#foguete{
+    width:120px;
+    position:relative;
+    z-index:2;
+    animation:subir 5s infinite;
+}
+
+/* CHAMA */
+#foguete::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:-45px;
+    width:22px;
+    height:50px;
+    background:linear-gradient(
+        to bottom,
+        #fff,
+        #ffd000,
+        #ff7b00,
+        transparent
+    );
+    border-radius:50%;
+    filter:blur(2px);
+    animation:fogo .15s infinite alternate;
+}
+
+/* ANIMAÇÕES */
+
+@keyframes subir{
+
+    /* sobe devagar */
+    0%{
+        transform:
+        translateY(110vh)
+        rotate(-12deg);
+    }
+
+    80%{
+        transform:
+        translateY(-20vh)
+        rotate(0deg);
+    }
+
+    /* desacelera ao sair */
+    100%{
+        transform:
+        translateY(-150vh)
+        rotate(4deg);
+    }
+}
+
+@keyframes fogo{
+    from{
+        height:40px;
+    }
+    to{
+        height:60px;
+    }
+}
+
+@keyframes cadente{
+    from{
+        transform:
+        translateX(0)
+        rotate(-35deg);
+        opacity:0;
+    }
+
+    10%,80%{
+        opacity:1;
+    }
+
+    to{
+        transform:
+        translateX(1800px)
+        rotate(-35deg);
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="estrela"></div>
+
+<div id="foguete">
+
+<svg viewBox="0 0 100 180" width="100%" height="100%">
+    
+    <!-- Corpo -->
+    <path
+        d="M50 10
+           C75 30 80 90 70 130
+           L30 130
+           C20 90 25 30 50 10"
+        fill="#d9d9d9"
+        stroke="#888"
+        stroke-width="2"
+    />
+
+    <!-- Nariz -->
+    <path
+        d="M50 10
+           L65 35
+           L35 35 Z"
+        fill="#ff4040"
+    />
+
+    <!-- Janela -->
+    <circle
+        cx="50"
+        cy="65"
+        r="10"
+        fill="#4fc3ff"
+        stroke="#0d4d7a"
+        stroke-width="3"
+    />
+
+    <!-- Asa esquerda -->
+    <path
+        d="M30 105
+           L10 135
+           L30 125 Z"
+        fill="#ff4040"
+    />
+
+    <!-- Asa direita -->
+    <path
+        d="M70 105
+           L90 135
+           L70 125 Z"
+        fill="#ff4040"
+    />
+
+    <!-- Motor -->
+    <rect
+        x="40"
+        y="130"
+        width="20"
+        height="18"
+        rx="3"
+        fill="#666"
+    />
+
+</svg>
+
+</div>
+
+</body>
+</html>
